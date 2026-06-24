@@ -95,9 +95,18 @@ poblarSelect($filtroSeg, valoresUnicos("segmento"));
 /* -------------------------------------------------------------
    5) Render de una tarjeta de producto
 ------------------------------------------------------------- */
+// Modificador de tarjeta por producto (para ajustar el zoom de cada PNG)
+const CLASE_POR_CODIGO = {
+  "14408": "product-card--traviata",
+  "14772": "product-card--bagley",
+  "14323": "product-card--chocolinas",
+  "14336": "product-card--diversion"
+};
+
 function crearTarjeta(producto) {
   const card = document.createElement("article");
-  card.className = "product-card fade-up";
+  const modificador = CLASE_POR_CODIGO[producto.codigo] || "";
+  card.className = `product-card fade-up ${modificador}`.trim();
 
   const badge = producto.promo
     ? `<span class="product-card__badge">Promo</span>`
