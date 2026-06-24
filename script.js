@@ -259,13 +259,13 @@ $verCatalogo.addEventListener("click", (e) => {
    - vuelve a posición estable tras unos milisegundos
 ------------------------------------------------------------- */
 const $fab = document.getElementById("whatsappFab");
-let ultimoScroll = window.pageYOffset;
+let ultimoScroll = window.scrollY;
 let resetTimer   = null;
 
 window.addEventListener(
   "scroll",
   () => {
-    const actual = window.pageYOffset;
+    const actual = window.scrollY;
     const delta  = actual - ultimoScroll;
 
     // Ignorar micro-movimientos para evitar saltos bruscos
