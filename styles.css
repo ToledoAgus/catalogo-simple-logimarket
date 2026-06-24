@@ -418,10 +418,10 @@ select:focus-visible {
   position: relative;
   background: #fff;            /* fondo completamente blanco */
   aspect-ratio: 5 / 4;
-  overflow: hidden;           /* recorta el marco negro incrustado al hacer zoom */
+  overflow: hidden;
   padding: 0;
   margin: 10px 10px 0;
-  border: 1px solid #ececec;   /* único borde permitido: muy sutil, casi imperceptible */
+  border: 0;                   /* sin marco alrededor de la imagen */
   border-radius: 8px;          /* esquinas ligeramente redondeadas */
 }
 .product-card__img {
@@ -429,22 +429,10 @@ select:focus-visible {
   object-fit: contain;       /* no deforma la imagen, conserva calidad */
   object-position: center;   /* centrada */
   background: #fff;
-  border: 0;                  /* sin borde negro propio del <img> */
-  outline: none;              /* sin outline negro (incluido estado roto) */
-  /* Zoom para empujar el marco negro del PNG fuera del contenedor (recortado por overflow) */
-  transform: scale(var(--zoom, 1.08));
-  transition: transform 0.35s ease;
+  border: 0;                  /* sin borde propio del <img> */
+  outline: none;              /* sin outline (incluido estado roto) */
+  /* sin transform: scale() ni clip-path: los PNG tienen bordes blancos limpios */
 }
-/* Hover: un poco más de zoom, conservando el recorte del marco */
-.product-card:hover .product-card__img {
-  transform: scale(calc(var(--zoom, 1.08) + 0.03));
-}
-
-/* Ajuste de zoom individual por producto (marco distinto en cada PNG) */
-.product-card--traviata   { --zoom: 1.08; }
-.product-card--bagley     { --zoom: 1.10; }
-.product-card--chocolinas { --zoom: 1.08; }
-.product-card--diversion  { --zoom: 1.10; }
 
 .product-card__badge {
   position: absolute;
